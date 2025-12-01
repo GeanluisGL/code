@@ -1,0 +1,1047 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Plan de Negocio - Sistema de Gestión para Librería "Biblos"</title>
+    <style>
+        :root {
+            --primary-color: #2c3e50;
+            --secondary-color: #3498db;
+            --accent-color: #e74c3c;
+            --light-color: #ecf0f1;
+            --dark-color: #2c3e50;
+            --text-color: #333;
+            --border-radius: 8px;
+            --box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+        
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+        
+        body {
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+            line-height: 1.6;
+            color: var(--text-color);
+            background-color: #f9f9f9;
+            padding: 0;
+            margin: 0;
+        }
+        
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 20px;
+        }
+        
+        header {
+            background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+            color: white;
+            padding: 30px 0;
+            text-align: center;
+            margin-bottom: 30px;
+            border-radius: 0 0 var(--border-radius) var(--border-radius);
+            box-shadow: var(--box-shadow);
+        }
+        
+        header h1 {
+            font-size: 2.5rem;
+            margin-bottom: 10px;
+        }
+        
+        header p {
+            font-size: 1.2rem;
+            max-width: 800px;
+            margin: 0 auto;
+        }
+        
+        .section {
+            background-color: white;
+            border-radius: var(--border-radius);
+            padding: 25px;
+            margin-bottom: 30px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .section:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 6px 12px rgba(0, 0, 0, 0.15);
+        }
+        
+        .section-title {
+            color: var(--primary-color);
+            border-bottom: 2px solid var(--secondary-color);
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+        
+        .subsection {
+            margin-bottom: 20px;
+        }
+        
+        .subsection-title {
+            color: var(--secondary-color);
+            margin-bottom: 10px;
+            font-size: 1.3rem;
+        }
+        
+        .card-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .card {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 20px;
+            box-shadow: var(--box-shadow);
+            transition: var(--transition);
+        }
+        
+        .card:hover {
+            transform: translateY(-3px);
+        }
+        
+        .card-title {
+            color: var(--primary-color);
+            margin-bottom: 15px;
+            font-size: 1.2rem;
+        }
+        
+        .highlight {
+            background-color: #fff9e6;
+            border-left: 4px solid #f1c40f;
+            padding: 15px;
+            margin: 15px 0;
+            border-radius: 0 var(--border-radius) var(--border-radius) 0;
+        }
+        
+        .metrics-table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-top: 15px;
+        }
+        
+        .metrics-table th, .metrics-table td {
+            padding: 12px 15px;
+            text-align: left;
+            border-bottom: 1px solid #ddd;
+        }
+        
+        .metrics-table th {
+            background-color: var(--primary-color);
+            color: white;
+        }
+        
+        .metrics-table tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+        
+        .risk-item {
+            margin-bottom: 15px;
+            padding-bottom: 15px;
+            border-bottom: 1px dashed #ddd;
+        }
+        
+        .risk-item:last-child {
+            border-bottom: none;
+        }
+        
+        .risk-title {
+            font-weight: bold;
+            color: var(--accent-color);
+        }
+        
+        .cost-breakdown {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .cost-item {
+            flex: 1;
+            min-width: 250px;
+            background-color: var(--light-color);
+            padding: 15px;
+            border-radius: var(--border-radius);
+        }
+        
+        .cost-title {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .stakeholder-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+        
+        .stakeholder-card {
+            background-color: var(--light-color);
+            border-radius: var(--border-radius);
+            padding: 15px;
+            box-shadow: var(--box-shadow);
+        }
+        
+        .stakeholder-name {
+            font-weight: bold;
+            margin-bottom: 10px;
+            color: var(--primary-color);
+        }
+        
+        .stakeholder-interests, .stakeholder-issues {
+            margin-bottom: 10px;
+        }
+        
+        .stakeholder-status {
+            font-style: italic;
+            color: #666;
+        }
+        
+        .nav-tabs {
+            display: flex;
+            flex-wrap: wrap;
+            margin-bottom: 20px;
+            border-bottom: 2px solid var(--secondary-color);
+        }
+        
+        .nav-tab {
+            padding: 10px 20px;
+            background-color: #f1f1f1;
+            border: none;
+            cursor: pointer;
+            transition: var(--transition);
+            font-weight: bold;
+            color: var(--dark-color);
+        }
+        
+        .nav-tab.active {
+            background-color: var(--secondary-color);
+            color: white;
+        }
+        
+        .tab-content {
+            display: none;
+        }
+        
+        .tab-content.active {
+            display: block;
+        }
+        
+        footer {
+            background-color: var(--primary-color);
+            color: white;
+            text-align: center;
+            padding: 20px 0;
+            margin-top: 40px;
+            border-radius: var(--border-radius) var(--border-radius) 0 0;
+        }
+        
+        .participants {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 15px;
+            margin-top: 15px;
+        }
+        
+        .participant {
+            background-color: rgba(255, 255, 255, 0.1);
+            padding: 8px 15px;
+            border-radius: 20px;
+        }
+        
+        @media (max-width: 768px) {
+            header h1 {
+                font-size: 2rem;
+            }
+            
+            .section {
+                padding: 15px;
+            }
+            
+            .section-title {
+                font-size: 1.5rem;
+            }
+            
+            .card-container {
+                grid-template-columns: 1fr;
+            }
+            
+            .metrics-table {
+                font-size: 0.9rem;
+            }
+            
+            .metrics-table th, .metrics-table td {
+                padding: 8px 10px;
+            }
+        }
+        
+        @media (max-width: 480px) {
+            header {
+                padding: 20px 0;
+            }
+            
+            header h1 {
+                font-size: 1.7rem;
+            }
+            
+            .section-title {
+                font-size: 1.3rem;
+            }
+            
+            .nav-tab {
+                padding: 8px 15px;
+                font-size: 0.9rem;
+            }
+        }
+    </style>
+</head>
+<body>
+    <header>
+        <div class="container">
+            <h1>Plan de Negocio - Sistema de Gestión para Librería "Biblos"</h1>
+            <p>Implementación de un Sistema de Gestión de Inventario y Punto de Venta Integrado</p>
+        </div>
+    </header>
+    
+    <div class="container">
+        <div class="nav-tabs">
+            <button class="nav-tab active" data-tab="problem">Problema</button>
+            <button class="nav-tab" data-tab="solution">Solución</button>
+            <button class="nav-tab" data-tab="benefits">Beneficios</button>
+            <button class="nav-tab" data-tab="scope">Alcance</button>
+            <button class="nav-tab" data-tab="stakeholders">Partes Interesadas</button>
+            <button class="nav-tab" data-tab="resources">Recursos</button>
+            <button class="nav-tab" data-tab="risks">Riesgos</button>
+            <button class="nav-tab" data-tab="costs">Costos</button>
+            <button class="nav-tab" data-tab="metrics">Métricas</button>
+        </div>
+        
+        <!-- PROBLEM SECTION -->
+        <section id="problem" class="tab-content active">
+            <div class="section">
+                <h2 class="section-title">PROBLEMA</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Cuál es el problema?</h3>
+                    <p>La librería "Biblos" carece de una plataforma digital que permita gestionar de manera eficiente todo el proceso relacionado con las ventas y el inventario de libros.</p>
+                    <p>Actualmente, el control de existencias, la entrada de nuevos productos y el registro de ventas diarias se realizan de forma manual o utilizando herramientas aisladas como hojas de cálculo. Esta falta de integración provoca inconsistencias entre los datos reales y los registrados, dificulta la actualización del inventario en tiempo real y limita la capacidad de la librería para analizar su rendimiento diario.</p>
+                    <p>Como consecuencia, se vuelve complicado identificar tendencias de venta, prever necesidades de reposición y brindar información precisa a los clientes sobre la disponibilidad de los libros.</p>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Quién tiene el problema?</h3>
+                    <p>Este problema afecta directamente al personal de la librería "Biblos", incluyendo:</p>
+                    <ul>
+                        <li>Vendedores que necesitan información actualizada para atender correctamente a los clientes</li>
+                        <li>Encargado de inventario que debe verificar manualmente los libros disponibles</li>
+                        <li>Administración que requiere datos confiables para tomar decisiones estratégicas</li>
+                    </ul>
+                    <p>Además, los clientes también se ven impactados de forma indirecta, ya que pueden experimentar demoras, recibir información incorrecta sobre la disponibilidad de libros o enfrentar inconvenientes cuando un título aparentemente disponible se encuentra agotado en realidad.</p>
+                    <p>En general, todo el funcionamiento operativo de la librería se ve limitado por la falta de una herramienta tecnológica adecuada.</p>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Por qué es importante?</h3>
+                    <p>Es importante resolver este problema porque la falta de control del inventario y las ventas puede generar:</p>
+                    <ul>
+                        <li>Pérdidas económicas</li>
+                        <li>Errores al momento de vender productos</li>
+                        <li>Dificultad para tomar decisiones basadas en datos</li>
+                        <li>Retrasos en la atención al cliente</li>
+                        <li>Problemas para reposicionar libros a tiempo</li>
+                    </ul>
+                    <p>Un sistema automatizado mejorará la eficiencia, reducirá errores y permitirá una gestión más profesional del negocio.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SOLUTION SECTION -->
+        <section id="solution" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">SOLUCIÓN</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Cuál es la solución propuesta?</h3>
+                    <p>El problema central es la falta de un sistema centralizado para la gestión de inventario y el registro de ventas. La solución debe centrarse en la implementación de un Sistema de Gestión de Inventario y Punto de Venta (POS) integrado.</p>
+                    
+                    <div class="card-container">
+                        <div class="card">
+                            <h4 class="card-title">1. Sistema de Inventario Centralizado (Módulo Backend)</h4>
+                            <p><strong>Descripción:</strong> Implementar un software que actúe como la única fuente de verdad para todo el stock.</p>
+                            <p><strong>Funcionalidades Clave:</strong></p>
+                            <ul>
+                                <li>Registro Detallado: Cada libro debe tener un registro con ISBN, título, autor, editorial, precio de compra, precio de venta, y cantidad disponible.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 class="card-title">2. Sistema de Punto de Venta (POS) Integrado (Módulo Frontend)</h4>
+                            <p><strong>Descripción:</strong> Software fácil de usar para el personal de ventas, que esté directamente conectado al inventario.</p>
+                            <p><strong>Funcionalidades Clave:</strong></p>
+                            <ul>
+                                <li>Registro de Venta Instantáneo: Al escanear el ISBN o buscar el libro, la venta se registra y el inventario se descuenta automáticamente en tiempo real.</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 class="card-title">3. Capacitación y Estandarización de Procesos</h4>
+                            <p><strong>Descripción:</strong> Asegurar que el personal sepa usar el nuevo sistema de manera correcta y consistente.</p>
+                            <p><strong>Acciones Clave:</strong></p>
+                            <ul>
+                                <li>Entrenamiento Obligatorio: Sesiones de capacitación intensivas para todo el personal de ventas, inventario y administrativo.</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Cómo se relaciona la solución con el problema?</h3>
+                    <p>El problema central de la librería "Biblos" es la falta de un sistema centralizado para la gestión eficiente del inventario y el registro de ventas, lo que conduce a errores, ineficiencia operativa y dificultad para tomar decisiones.</p>
+                    <p>La solución propuesta, la Implementación de un Sistema de Gestión de Inventario y Punto de Venta (POS) Integrado, se relaciona con el problema al abordarlo directamente con la centralización y automatización.</p>
+                </div>
+            </div>
+        </section>
+        
+        <!-- BENEFITS SECTION -->
+        <section id="benefits" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">BENEFICIOS</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Por qué estamos haciendo esto?</h3>
+                    <p>Estamos implementando este sistema porque la librería Biblos enfrenta serias dificultades para gestionar su inventario y registrar correctamente las ventas diarias. La falta de un sistema centralizado genera errores, pérdidas económicas, procesos lentos y decisiones poco informadas. Automatizar y centralizar estas tareas permitirá mejorar la eficiencia operativa y evitar problemas que actualmente afectan al negocio.</p>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Qué pretendemos lograr?</h3>
+                    <div class="card-container">
+                        <div class="card">
+                            <h4 class="card-title">Objetivos Principales</h4>
+                            <ul>
+                                <li>Un control preciso y en tiempo real del inventario</li>
+                                <li>Registro automático y confiable de las ventas</li>
+                                <li>Reducción de errores humanos en procesos administrativos</li>
+                                <li>Mayor eficiencia en la operación diaria del personal</li>
+                                <li>Mejor capacidad de análisis para tomar decisiones basadas en datos reales</li>
+                                <li>Mejora en la atención al cliente y en la experiencia de compra</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Cuáles son los beneficios financieros y no financieros esperados?</h3>
+                    
+                    <div class="card-container">
+                        <div class="card">
+                            <h4 class="card-title">Beneficios Financieros</h4>
+                            <ul>
+                                <li>Reducción de pérdidas por errores de inventario y ventas mal registradas</li>
+                                <li>Optimización del stock, evitando sobrecompras o faltantes que afectan los ingresos</li>
+                                <li>Incremento en las ventas gracias a una atención más rápida y precisa</li>
+                                <li>Mayor rentabilidad al tener control del margen por libro (precio compra/venta)</li>
+                                <li>Mejor planificación de compras, lo que reduce costos y mejora la rotación del inventario</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 class="card-title">Beneficios No Financieros</h4>
+                            <ul>
+                                <li>Mayor eficiencia operativa y menos carga manual para el personal</li>
+                                <li>Reducción de estrés, confusión y retrabajo dentro del equipo</li>
+                                <li>Mejor experiencia del cliente, al recibir atención más ágil y confiable</li>
+                                <li>Información precisa y centralizada, facilitando reportes, auditorías y toma de decisiones</li>
+                                <li>Mayor profesionalización del negocio, adoptando procesos modernos</li>
+                                <li>Capacitación y estandarización, lo que mejora la calidad del trabajo del personal</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- SCOPE SECTION -->
+        <section id="scope" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">ALCANCE</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Qué incluye la solución?</h3>
+                    <div class="card-container">
+                        <div class="card">
+                            <h4 class="card-title">Funcionalidades Incluidas</h4>
+                            <ul>
+                                <li>Mantenimiento de Libros disponibles (Crear, actualizar, leer y borrar)</li>
+                                <li>Gestionar existencia de libros</li>
+                                <li>Registrar y procesar ventas de libros</li>
+                                <li>Generar reportes diarios de ventas</li>
+                                <li>Visualizar métricas clave (libros más vendidos, ventas por fecha, niveles de inventario)</li>
+                                <li>Manejar información básica de libros: título, autor, categoría, precio, cantidad en stock</li>
+                                <li>Proveer una interfaz intuitiva para usuarios administrativos de la librería</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Qué no está cubierto por la solución?</h3>
+                    <div class="card-container">
+                        <div class="card">
+                            <h4 class="card-title">Exclusiones</h4>
+                            <ul>
+                                <li>Integración con pasarelas de pago en línea</li>
+                                <li>Catálogo público para clientes externos (solo uso interno)</li>
+                                <li>Módulo de facturación fiscal</li>
+                                <li>Gestión de clientes o fidelización</li>
+                                <li>Sincronización con inventarios externos o proveedores</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Cuánto tiempo, recursos y tecnología están disponibles?</h3>
+                    <div class="card-container">
+                        <div class="card">
+                            <h4 class="card-title">Recursos Disponibles</h4>
+                            <ul>
+                                <li>5 Desarrolladores</li>
+                                <li>Lapso de 4 semanas</li>
+                                <li>Tecnologías: Asp.Net core MVC</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Cuál es la relevancia del proyecto para la visión y objetivos estratégicos de la organización?</h3>
+                    <div class="card-container">
+                        <div class="card">
+                            <h4 class="card-title">Alineación Estratégica</h4>
+                            <ul>
+                                <li>Control preciso y actualizado del inventario de libros</li>
+                                <li>Mayor agilidad en la gestión de ventas diarias</li>
+                                <li>Reducción de errores en el manejo manual de existencias</li>
+                                <li>Reportes para apoyar la toma de decisiones</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- STAKEHOLDERS SECTION -->
+        <section id="stakeholders" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">PARTES INTERESADAS</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Quiénes son las partes interesadas?</h3>
+                    <div class="stakeholder-grid">
+                        <div class="stakeholder-card">
+                            <div class="stakeholder-name">Dueño o Administrador de la Librería Biblos</div>
+                            <div class="stakeholder-interests"><strong>Intereses:</strong> Control, menos pérdidas, mejores decisiones.</div>
+                            <div class="stakeholder-issues"><strong>Problemas:</strong> Datos inexactos y procesos manuales.</div>
+                            <div class="stakeholder-status"><strong>Estado de compromiso:</strong> Alto</div>
+                        </div>
+                        
+                        <div class="stakeholder-card">
+                            <div class="stakeholder-name">Personal de Ventas / Cajeros</div>
+                            <div class="stakeholder-interests"><strong>Intereses:</strong> Rapidez y facilidad en ventas.</div>
+                            <div class="stakeholder-issues"><strong>Problemas:</strong> Procesos lentos y errores frecuentes.</div>
+                            <div class="stakeholder-status"><strong>Estado de compromiso:</strong> Medio</div>
+                        </div>
+                        
+                        <div class="stakeholder-card">
+                            <div class="stakeholder-name">Encargado de Inventario</div>
+                            <div class="stakeholder-interests"><strong>Intereses:</strong> Stock preciso y actualizado.</div>
+                            <div class="stakeholder-issues"><strong>Problemas:</strong> Inventario manual y poco confiable.</div>
+                            <div class="stakeholder-status"><strong>Estado de compromiso:</strong> Alto</div>
+                        </div>
+                        
+                        <div class="stakeholder-card">
+                            <div class="stakeholder-name">Personal Administrativo / Contabilidad</div>
+                            <div class="stakeholder-interests"><strong>Intereses:</strong> Reportes claros y consistentes.</div>
+                            <div class="stakeholder-issues"><strong>Problemas:</strong> Información dispersa y retrasos.</div>
+                            <div class="stakeholder-status"><strong>Estado de compromiso:</strong> Medio-alto</div>
+                        </div>
+                        
+                        <div class="stakeholder-card">
+                            <div class="stakeholder-name">Clientes de la Librería</div>
+                            <div class="stakeholder-interests"><strong>Intereses:</strong> Atención rápida y disponibilidad real.</div>
+                            <div class="stakeholder-issues"><strong>Problemas:</strong> Demoras y falta de claridad del stock.</div>
+                            <div class="stakeholder-status"><strong>Estado de compromiso:</strong> Bajo</div>
+                        </div>
+                        
+                        <div class="stakeholder-card">
+                            <div class="stakeholder-name">Equipo de Desarrollo o Proveedor del Sistema</div>
+                            <div class="stakeholder-interests"><strong>Intereses:</strong> Sistema estable y funcional.</div>
+                            <div class="stakeholder-issues"><strong>Problemas:</strong> Necesitan requerimientos claros.</div>
+                            <div class="stakeholder-status"><strong>Estado de compromiso:</strong> Alto</div>
+                        </div>
+                        
+                        <div class="stakeholder-card">
+                            <div class="stakeholder-name">Equipo de Capacitación</div>
+                            <div class="stakeholder-interests"><strong>Intereses:</strong> Que el personal use bien el sistema.</div>
+                            <div class="stakeholder-issues"><strong>Problemas:</strong> Diferentes niveles de manejo tecnológico.</div>
+                            <div class="stakeholder-status"><strong>Estado de compromiso:</strong> Medio</div>
+                        </div>
+                        
+                        <div class="stakeholder-card">
+                            <div class="stakeholder-name">Proveedores de Libros (stakeholders indirectos)</div>
+                            <div class="stakeholder-interests"><strong>Intereses:</strong> Pedidos precisos.</div>
+                            <div class="stakeholder-issues"><strong>Problemas:</strong> Errores en cantidades solicitadas.</div>
+                            <div class="stakeholder-status"><strong>Estado de compromiso:</strong> Bajo</div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- RESOURCES SECTION -->
+        <section id="resources" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">RECURSOS</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Qué recursos tangibles e intangibles se requieren?</h3>
+                    
+                    <div class="card-container">
+                        <div class="card">
+                            <h4 class="card-title">Recursos Humanos Internos</h4>
+                            <ul>
+                                <li>5 desarrolladores full-time por 4 semanas (2 backend, 2 frontend, 1 full-stack)</li>
+                                <li>1 Project Manager</li>
+                                <li>1 Product Owner de Biblos (40% tiempo)</li>
+                                <li>Usuarios clave de la librería para validación (encargado inventario, vendedores)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 class="card-title">Recursos Humanos Externos</h4>
+                            <ul>
+                                <li>Arquitecto de software consultor (3 días)</li>
+                                <li>Especialista POS (2 días)</li>
+                                <li>Capacitador técnico (3 sesiones)</li>
+                                <li>Soporte post-implementación (3 meses)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 class="card-title">Recursos Tecnológicos</h4>
+                            <ul>
+                                <li>Equipos de desarrollo</li>
+                                <li>Servidor/cloud (Azure/AWS)</li>
+                                <li>2-3 computadoras/tablets para punto de venta</li>
+                                <li>Lectores código de barras</li>
+                                <li>Impresora tickets</li>
+                                <li>Red estable</li>
+                                <li>Licencias SQL Server</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 class="card-title">Recursos de Información</h4>
+                            <ul>
+                                <li>Inventario actual de libros</li>
+                                <li>Datos históricos de ventas</li>
+                                <li>Catálogo con ISBNs y precios</li>
+                                <li>Documentación de procesos actuales</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 class="card-title">Recursos Financieros</h4>
+                            <ul>
+                                <li>~$34,000 año 1 (desarrollo $25K, infraestructura $3K, implementación $2.5K, hosting/mantenimiento anual $3.6K)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Quién se necesita en la empresa?</h3>
+                    
+                    <div class="card-container">
+                        <div class="card">
+                            <h4 class="card-title">Equipo Técnico</h4>
+                            <ul>
+                                <li>5 desarrolladores (2 backend, 2 frontend, 1 full-stack)</li>
+                                <li>1 Project Manager/Scrum Master para coordinar el proyecto</li>
+                                <li>1 QA/Tester (últimas 2 semanas)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 class="card-title">Equipo de Negocio</h4>
+                            <ul>
+                                <li>1 Product Owner o representante de Biblos con autoridad para definir requisitos y tomar decisiones (dedicación 40%)</li>
+                                <li>1 Project Sponsor (gerente/dueño) para aprobar presupuesto y cambios importantes</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 class="card-title">Usuarios Clave de Biblos</h4>
+                            <ul>
+                                <li>Encargado de inventario (20% tiempo) para validar flujos de stock</li>
+                                <li>1-2 vendedores senior (15% tiempo) para probar la interfaz de ventas</li>
+                                <li>Personal administrativo/contador (10% tiempo) para validar reportes</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Quién se requiere externamente?</h3>
+                    
+                    <div class="card-container">
+                        <div class="card">
+                            <h4 class="card-title">Consultores Especializados</h4>
+                            <ul>
+                                <li>1 arquitecto de software (3 días) para diseñar la arquitectura del sistema</li>
+                                <li>1 especialista en sistemas POS/retail (2 días) para definir mejores prácticas de punto de venta</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 class="card-title">Capacitación</h4>
+                            <ul>
+                                <li>1 capacitador técnico para entrenar al personal de Biblos en el uso del nuevo sistema (3 sesiones durante 1 semana)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 class="card-title">Soporte Técnico</h4>
+                            <ul>
+                                <li>Equipo o empresa de soporte post-implementación para resolver bugs y realizar ajustes menores (contrato de 3 meses mínimo, modalidad on-call)</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 class="card-title">Proveedores de Servicios</h4>
+                            <ul>
+                                <li>Proveedor de hosting/cloud (Azure, AWS o similar)</li>
+                                <li>Proveedor de hardware (computadoras, lectores de código de barras, impresoras térmicas)</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- RISKS SECTION -->
+        <section id="risks" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">RIESGOS</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">1. RIESGOS TÉCNICOS</h3>
+                    
+                    <div class="risk-item">
+                        <div class="risk-title">Pérdida o Corrupción de Datos</div>
+                        <p><strong>¿Qué podría salir mal?</strong> Fallos del servidor, ataques cibernéticos, errores durante actualizaciones, eliminación accidental de registros.</p>
+                        <p><strong>Impacto:</strong> Pérdida de inventario y ventas históricas, imposibilidad de generar reportes, pérdidas financieras.</p>
+                        <p><strong>Mitigación:</strong> Respaldos automáticos diarios, copias locales semanales, sistema de recuperación ante desastres, validación de datos en cada transacción.</p>
+                    </div>
+                    
+                    <div class="risk-item">
+                        <div class="risk-title">Problemas de Rendimiento</div>
+                        <p><strong>¿Qué podría salir mal?</strong> Lentitud en temporadas altas, bloqueos durante actualizaciones.</p>
+                        <p><strong>Impacto:</strong> Demoras en atención, pérdida de ventas, errores en inventario.</p>
+                        <p><strong>Mitigación:</strong> Arquitectura escalable, optimización de consultas, pruebas de carga, monitoreo continuo.</p>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">2. RIESGOS OPERACIONALES</h3>
+                    
+                    <div class="risk-item">
+                        <div class="risk-title">Resistencia al Cambio del Personal</div>
+                        <p><strong>¿Qué podría salir mal?</strong> Empleados prefieren métodos tradicionales, uso incorrecto del sistema.</p>
+                        <p><strong>Impacto:</strong> Datos inconsistentes, subutilización de la inversión, reducción de eficiencia.</p>
+                        <p><strong>Mitigación:</strong> Capacitación completa, manuales sencillos, implementación gradual, designar "campeones" del sistema, incentivos por adopción.</p>
+                    </div>
+                    
+                    <div class="risk-item">
+                        <div class="risk-title">Errores Humanos</div>
+                        <p><strong>¿Qué podría salir mal?</strong> Ingreso incorrecto de precios, duplicación de registros, errores en conteo.</p>
+                        <p><strong>Impacto:</strong> Inventario inexacto, cobros incorrectos, decisiones basadas en datos erróneos.</p>
+                        <p><strong>Mitigación:</strong> Validaciones automáticas, campos predefinidos, confirmaciones para acciones críticas, auditorías periódicas, permisos diferenciados.</p>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">3. RIESGOS FINANCIEROS</h3>
+                    
+                    <div class="risk-item">
+                        <div class="risk-title">Sobrecosto del Proyecto</div>
+                        <p><strong>¿Qué podría salir mal?</strong> Requerimientos adicionales, hardware más potente, desarrollo prolongado.</p>
+                        <p><strong>Impacto:</strong> Presupuesto insuficiente, retraso en lanzamiento, recorte de funcionalidades.</p>
+                        <p><strong>Mitigación:</strong> Alcance claro desde el inicio, presupuesto con 15-20% de contingencia, desarrollo por fases (MVP primero), control de cambios formal.</p>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">4. RIESGOS DE SEGURIDAD</h3>
+                    
+                    <div class="risk-item">
+                        <div class="risk-title">Acceso No Autorizado</div>
+                        <p><strong>¿Qué podría salir mal?</strong> Hackeo de cuentas, manipulación de precios/inventario, robo de información.</p>
+                        <p><strong>Impacto:</strong> Fraude, pérdida de confidencialidad, daño reputacional, responsabilidad legal.</p>
+                        <p><strong>Mitigación:</strong> Contraseñas robustas, roles y permisos definidos, registro de auditoría, encriptación de datos sensibles, actualizaciones de seguridad regulares.</p>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">5. RIESGOS DE DISPONIBILIDAD</h3>
+                    
+                    <div class="risk-item">
+                        <div class="risk-title">Caída del Sistema</div>
+                        <p><strong>¿Qué podría salir mal?</strong> Servidor fuera de servicio, problemas de conectividad.</p>
+                        <p><strong>Impacto:</strong> Imposibilidad de procesar ventas, clientes insatisfechos, pérdida de ingresos.</p>
+                        <p><strong>Mitigación:</strong> Plan de contingencia offline, SLA de 99.9% uptime, redundancia en infraestructura, mantenimientos en horarios de baja actividad.</p>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- COSTS SECTION -->
+        <section id="costs" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">COSTOS</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Cuáles son las principales fuentes de costo?</h3>
+                    <p>Los costos del proyecto se dividen en costos directos e indirectos, asociados al desarrollo, implementación y mantenimiento del sistema.</p>
+                    
+                    <div class="cost-breakdown">
+                        <div class="cost-item">
+                            <div class="cost-title">1. Costos de Desarrollo</div>
+                            <ul>
+                                <li>Recursos humanos: Salarios de 5 desarrolladores durante 4 semanas</li>
+                                <li>Licencias de software: Herramientas de desarrollo, bases de datos y servicios en la nube</li>
+                                <li>Infraestructura tecnológica: Servidores, almacenamiento y respaldo</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cost-item">
+                            <div class="cost-title">2. Costos de Implementación</div>
+                            <ul>
+                                <li>Capacitación del personal: Sesiones de entrenamiento para el uso del sistema</li>
+                                <li>Hardware: Dispositivos como computadoras, tablets o escáneres de código de barras</li>
+                                <li>Migración de datos: Transferencia de registros manuales a la plataforma digital</li>
+                            </ul>
+                        </div>
+                        
+                        <div class="cost-item">
+                            <div class="cost-title">3. Costos de Mantenimiento</div>
+                            <ul>
+                                <li>Soporte técnico: Actualizaciones, resolución de errores y mejoras</li>
+                                <li>Costos operativos: Hosting, electricidad y conectividad</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Cuál es el presupuesto estimado aproximado?</h3>
+                    <p>Basado en los recursos y tiempo disponibles, el presupuesto estimado es:</p>
+                    
+                    <table class="metrics-table">
+                        <thead>
+                            <tr>
+                                <th>Rubro</th>
+                                <th>Costo Estimado (USD)</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Desarrollo (5 desarrolladores, 4 semanas)</td>
+                                <td>$20,000 - $25,000</td>
+                            </tr>
+                            <tr>
+                                <td>Licencias de software</td>
+                                <td>$1,000 - $2,000</td>
+                            </tr>
+                            <tr>
+                                <td>Hardware (escáneres, tablets)</td>
+                                <td>$1,500 - $3,000</td>
+                            </tr>
+                            <tr>
+                                <td>Capacitación del personal</td>
+                                <td>$1,000 - $2,000</td>
+                            </tr>
+                            <tr>
+                                <td>Mantenimiento anual</td>
+                                <td>$2,000 - $4,000</td>
+                            </tr>
+                            <tr>
+                                <td><strong>Total Estimado</strong></td>
+                                <td><strong>$25,500 - $36,000</strong></td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Cuáles son los costos de por vida de la inversión?</h3>
+                    <p>Los costos a lo largo del ciclo de vida del sistema incluyen:</p>
+                    
+                    <div class="card-container">
+                        <div class="card">
+                            <h4 class="card-title">Costos Iniciales (Año 1)</h4>
+                            <p>Desarrollo, hardware, capacitación e implementación ($25,500 - $36,000)</p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 class="card-title">Costos Operativos Anuales</h4>
+                            <p>Mantenimiento, soporte técnico y actualizaciones ($2,000 - $4,000 por año)</p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 class="card-title">Costos de Escalabilidad</h4>
+                            <p>Mejoras futuras para adaptarse al crecimiento del negocio ($3,000 - $5,000 cada 2-3 años)</p>
+                        </div>
+                    </div>
+                    
+                    <div class="highlight">
+                        <h4>Inversión Total en 5 años:</h4>
+                        <ul>
+                            <li>Año 1: $25,500 - $36,000</li>
+                            <li>Años 2-5: $8,000 - $16,000 (mantenimiento)</li>
+                            <li><strong>Total (5 años): $33,500 - $52,000</strong></li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </section>
+        
+        <!-- METRICS SECTION -->
+        <section id="metrics" class="tab-content">
+            <div class="section">
+                <h2 class="section-title">MÉTRICAS</h2>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Cómo se puede medir el éxito?</h3>
+                    <p>El éxito se puede medir a través de la cuantificación de las mejoras en tres áreas clave directamente afectadas por la falta de un sistema centralizado:</p>
+                    
+                    <div class="card-container">
+                        <div class="card">
+                            <h4 class="card-title">Precisión Operacional</h4>
+                            <p>El grado en que el inventario digital coincide con el físico y la reducción de errores humanos en las transacciones.</p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 class="card-title">Eficiencia y Rapidez</h4>
+                            <p>La disminución del tiempo necesario para realizar tareas rutinarias (como registrar ventas, cerrar caja y reponer stock).</p>
+                        </div>
+                        
+                        <div class="card">
+                            <h4 class="card-title">Impacto Económico</h4>
+                            <p>La traducción de la eficiencia operativa en una mejor gestión del capital, menos pérdidas y mayor rentabilidad.</p>
+                        </div>
+                    </div>
+                </div>
+                
+                <div class="subsection">
+                    <h3 class="subsection-title">¿Qué métricas se pueden utilizar para medir los beneficios?</h3>
+                    
+                    <table class="metrics-table">
+                        <thead>
+                            <tr>
+                                <th>Área de Beneficio</th>
+                                <th>Métrica Clave (KPI)</th>
+                                <th>Objetivo/Beneficio a Medir</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <tr>
+                                <td>Precisión de Inventario</td>
+                                <td>Precisión del Inventario (PI)</td>
+                                <td>Aumento de la exactitud del stock digital vs. físico, lo que previene ventas fallidas</td>
+                            </tr>
+                            <tr>
+                                <td>Reducción de Errores</td>
+                                <td>Errores de Venta Registrados</td>
+                                <td>Disminución del número de transacciones que requieren corrección o anulación</td>
+                            </tr>
+                            <tr>
+                                <td>Eficiencia Operativa</td>
+                                <td>Tiempo de Cierre de Caja</td>
+                                <td>Reducción del tiempo que el personal dedica a la conciliación manual de ventas al final del día</td>
+                            </tr>
+                            <tr>
+                                <td>Gestión de Compras</td>
+                                <td>Ventas Perdidas por Falta de Stock</td>
+                                <td>Minimización de las oportunidades de venta perdidas gracias a las alertas de stock mínimo</td>
+                            </tr>
+                            <tr>
+                                <td>Rentabilidad</td>
+                                <td>Tasa de Rotación de Inventario (TRI)</td>
+                                <td>Optimización del uso del capital al asegurar que el stock se vende más rápido</td>
+                            </tr>
+                            <tr>
+                                <td>Impacto Financiero</td>
+                                <td>Margen Bruto de Utilidad</td>
+                                <td>Confirmación de que las mejoras en eficiencia y compras resultan en un mejor desempeño económico</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </section>
+    </div>
+    
+    <footer>
+        <div class="container">
+            <h3>BUSINESS CASE CANVAS (Viernes - Grupo #5)</h3>
+            <p>Participantes:</p>
+            <div class="participants">
+                <div class="participant">Cristopher Xander Aza Diaz (Mat 2023-0731)</div>
+                <div class="participant">Geanluis Lorenzo (Mat 2021-0325)</div>
+                <div class="participant">Emil Comarazamy (Mat. 2024-0043)</div>
+                <div class="participant">Pilar Medina (Mat. 2024-0167)</div>
+                <div class="participant">Priscila Pérez (Mat. 2024-0090)</div>
+                <div class="participant">Teudy Joshua Encarnacion Fulgencio (Mat. 2024-0018)</div>
+                <div class="participant">Derel Anderson Portorreal Valdez (Mat. 2022-0934)</div>
+                <div class="participant">Kemyl Fernandez (Mat.2021-2302)</div>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Tab navigation functionality
+        document.addEventListener('DOMContentLoaded', function() {
+            const tabs = document.querySelectorAll('.nav-tab');
+            const tabContents = document.querySelectorAll('.tab-content');
+            
+            tabs.forEach(tab => {
+                tab.addEventListener('click', () => {
+                    // Remove active class from all tabs and contents
+                    tabs.forEach(t => t.classList.remove('active'));
+                    tabContents.forEach(content => content.classList.remove('active'));
+                    
+                    // Add active class to clicked tab and corresponding content
+                    tab.classList.add('active');
+                    const tabId = tab.getAttribute('data-tab');
+                    document.getElementById(tabId).classList.add('active');
+                });
+            });
+        });
+    </script>
+</body>
+</html>
